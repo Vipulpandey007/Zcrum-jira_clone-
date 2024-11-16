@@ -5,8 +5,11 @@ import { PenBox } from "lucide-react";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import UserMenu from "./user-menu";
 import UserLoading from "./user-loading";
+import { checkUser } from "@/lib/checkUser";
 
-const Header = () => {
+async function Header() {
+  await checkUser();
+
   return (
     <header className="container mx-auto">
       <nav className="py-6 px-4 flex justify-between items-center">
@@ -42,6 +45,6 @@ const Header = () => {
       <UserLoading />
     </header>
   );
-};
+}
 
 export default Header;
