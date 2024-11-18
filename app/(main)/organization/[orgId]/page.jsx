@@ -2,6 +2,7 @@ import { getOrganization } from "@/actions/organization";
 import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
 import OrgSwitcher from "@/components/OrgSwitcher";
+import ProjectList from "./_components/ProjectList";
 
 export default async function OrganizationPage({ params }) {
   const { orgId } = params;
@@ -26,7 +27,7 @@ export default async function OrganizationPage({ params }) {
         <OrgSwitcher />
       </div>
       <div className="mb-4">
-        {/* <ProjectList orgId={organization.id} /> */}
+        <ProjectList orgId={organization.id} />
       </div>
       <div className="mt-8">{/* <UserIssues userId={userId} /> */}</div>
     </div>
