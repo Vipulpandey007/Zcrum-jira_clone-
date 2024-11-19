@@ -8,6 +8,7 @@ import { useOrganization } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import useFetch from "@/hooks/use-fetch";
 import { deleteProject } from "@/actions/projects";
+import { toast } from "sonner";
 
 export default function DeleteProject({ projectId }) {
   const { membership } = useOrganization();
@@ -29,7 +30,8 @@ export default function DeleteProject({ projectId }) {
   };
 
   useEffect(() => {
-    if (deleted) {
+    if (deleted?.success) {
+      toast.error("project deleted");
       router.refresh();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
