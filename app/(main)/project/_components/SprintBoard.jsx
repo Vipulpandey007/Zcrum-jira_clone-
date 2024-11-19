@@ -7,14 +7,13 @@ import { Button } from "@/components/ui/button";
 import { BarLoader } from "react-spinners";
 import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
 import useFetch from "@/hooks/use-fetch";
-
-import statuses from "@/data/status";
+import statuses from "@/lib/status";
 import { getIssuesForSprint, updateIssueOrder } from "@/actions/issues";
-
-import SprintManager from "./sprint-manager";
-import IssueCreationDrawer from "./create-issue";
-import IssueCard from "@/components/issue-card";
-import BoardFilters from "./board-filters";
+// import IssueCreationDrawer from "./create-issue";
+// import IssueCard from "@/components/issue-card";
+// import BoardFilters from "./board-filters";
+import SprintManager from "./SprintManager";
+import IssueCreationDrawer from "./IssueCreationDrawer";
 
 function reorder(list, startIndex, endIndex) {
   const result = Array.from(list);
@@ -148,9 +147,9 @@ export default function SprintBoard({ sprints, projectId, orgId }) {
         projectId={projectId}
       />
 
-      {issues && !issuesLoading && (
+      {/* {issues && !issuesLoading && (
         <BoardFilters issues={issues} onFilterChange={handleFilterChange} />
-      )}
+      )} */}
 
       {updateIssuesError && (
         <p className="text-red-500 mt-2">{updateIssuesError.message}</p>
@@ -187,7 +186,7 @@ export default function SprintBoard({ sprints, projectId, orgId }) {
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
                           >
-                            <IssueCard
+                            {/* <IssueCard
                               issue={issue}
                               onDelete={() => fetchIssues(currentSprint.id)}
                               onUpdate={(updated) =>
@@ -198,7 +197,7 @@ export default function SprintBoard({ sprints, projectId, orgId }) {
                                   })
                                 )
                               }
-                            />
+                            /> */}
                           </div>
                         )}
                       </Draggable>
